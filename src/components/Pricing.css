@@ -1,0 +1,147 @@
+.pricing {
+  padding: 6rem 0;
+  background: white;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.pricing-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow);
+  border: 2px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  border-color: var(--primary-color);
+}
+
+.pricing-card-featured {
+  border-color: var(--primary-color);
+  position: relative;
+}
+
+.pricing-card-featured::before {
+  content: '⭐ Popular';
+  position: absolute;
+  top: -15px;
+  right: 20px;
+  background: var(--gradient);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+}
+
+.pricing-card-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--dark-color);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid var(--primary-color);
+}
+
+.pricing-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pricing-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 0;
+}
+
+.pricing-item-name {
+  font-weight: 500;
+  color: var(--dark-color);
+}
+
+.pricing-item-dots {
+  border-bottom: 2px dotted #ddd;
+  flex-grow: 1;
+  min-width: 20px;
+}
+
+.pricing-item-price {
+  font-weight: 700;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+
+.pricing-note {
+  background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 2rem;
+  border-left: 5px solid var(--primary-color);
+}
+
+.pricing-note p {
+  color: #555;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.pricing-cta {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.pricing-cta .btn {
+  font-size: 1.1rem;
+  padding: 15px 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pricing {
+    padding: 4rem 0;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .pricing-card {
+    padding: 2rem;
+  }
+
+  .pricing-card-title {
+    font-size: 1.4rem;
+  }
+
+  .pricing-item-name {
+    font-size: 0.95rem;
+  }
+
+  .pricing-item-price {
+    font-size: 1rem;
+  }
+
+  .pricing-note {
+    padding: 1.5rem;
+  }
+
+  .pricing-note p {
+    font-size: 0.95rem;
+  }
+}

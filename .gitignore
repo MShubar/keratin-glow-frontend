@@ -1,0 +1,6 @@
+# Node/Vite
+node_modules/
+dist/
+.env*
+.vercel
+.DS_Store
