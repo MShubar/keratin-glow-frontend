@@ -9,11 +9,24 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
+    const wasMenuOpen = isMenuOpen;
+    setIsMenuOpen(false);
+
+    const scroll = () => {
+      const element = document.getElementById(id);
+      const header = document.querySelector('.header');
+      if (!element || !header) return;
+
+      const headerHeight = header.getBoundingClientRect().height;
+      const offset = 16;
+      const top =
+        element.getBoundingClientRect().top + window.scrollY - headerHeight - offset;
+
+      window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+    };
+
+    // Wait for mobile drawer to close before scrolling
+    window.setTimeout(scroll, wasMenuOpen ? 320 : 0);
   };
 
   return (

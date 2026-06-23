@@ -22,6 +22,7 @@
   --gradient: linear-gradient(135deg, #d4af37 0%, #8b7355 100%);
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
   --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --header-offset: 5.5rem;
 }
 
 body {
@@ -129,9 +130,14 @@ body {
   }
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling with fixed header offset */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-offset);
+}
+
+section[id] {
+  scroll-margin-top: var(--header-offset);
 }
 
 /* Selection */
