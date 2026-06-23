@@ -1,6 +1,6 @@
 .about {
   padding: 6rem 0;
-  background: var(--light-color);
+  background: var(--bg-section-alt);
 }
 
 .about-content {
@@ -27,7 +27,7 @@
 .about-text p {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #555;
+  color: var(--text-muted);
   margin-bottom: 1.5rem;
 }
 
@@ -43,17 +43,20 @@
 }
 
 .feature-card {
-  background: white;
+  background: var(--bg-card);
   padding: 2rem;
   border-radius: 12px;
   box-shadow: var(--shadow);
+  border: 1px solid var(--border-card);
   text-align: center;
   transition: all 0.3s ease;
 }
 
 .feature-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-subtle);
+  background: var(--bg-card-hover);
 }
 
 .feature-card svg {
@@ -69,13 +72,13 @@
 }
 
 .feature-card p {
-  color: #666;
+  color: var(--text-muted);
   line-height: 1.6;
 }
 
 .about-location {
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-  color: white;
+  color: var(--bg-dark);
   padding: 3rem;
   border-radius: 16px;
   text-align: center;
@@ -93,7 +96,6 @@
   opacity: 0.95;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .about {
     padding: 4rem 0;

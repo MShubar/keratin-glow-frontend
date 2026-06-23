@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { WHATSAPP_URL } from '../config/site';
 import './Pricing.css';
 
 const pricingData = {
@@ -70,7 +71,7 @@ const Pricing = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Transparent pricing for all our professional services
+          Keratin treatment and hair service prices in Bahrain — all prices in Bahraini Dinar (BD)
         </motion.p>
 
         <div className="pricing-grid">
@@ -136,7 +137,7 @@ const Pricing = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
         >
           <motion.a 
-            href="https://api.whatsapp.com/send?phone=97333263906" 
+            href={WHATSAPP_URL} 
             target="_blank" 
             rel="noopener noreferrer"
             className="btn btn-primary"

@@ -1,5 +1,14 @@
 import { MessageCircle, MapPin, Instagram } from 'lucide-react';
 import { motion } from 'framer-motion';
+import {
+  ADDRESS,
+  INSTAGRAM_HANDLE,
+  INSTAGRAM_URL,
+  MAPS_EMBED_URL,
+  MAPS_URL,
+  PHONE_DISPLAY,
+  WHATSAPP_URL,
+} from '../config/site';
 import './Contact.css';
 
 const contactItemVariants = {
@@ -31,7 +40,7 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Book your appointment today and start your journey to beautiful hair
+          Book your keratin treatment appointment in Bahrain — Janabiyah
         </motion.p>
 
         <div className="contact-grid">
@@ -69,11 +78,11 @@ const Contact = () => {
               <div>
                 <h4>WhatsApp</h4>
                 <a 
-                  href="https://api.whatsapp.com/send?phone=97333263906" 
+                  href={WHATSAPP_URL} 
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
-                  +973 3326 3906
+                  {PHONE_DISPLAY}
                 </a>
                 <p>Available for bookings and inquiries</p>
               </div>
@@ -97,13 +106,13 @@ const Contact = () => {
               <div>
                 <h4>Location</h4>
                 <a 
-                  href="https://maps.app.goo.gl/Qw9yFp3MLCGncCnz5" 
+                  href={MAPS_URL} 
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
                   View on Google Maps
                 </a>
-                <p>Bahrain</p>
+                <p>{ADDRESS.display}</p>
               </div>
             </motion.div>
 
@@ -125,11 +134,11 @@ const Contact = () => {
               <div>
                 <h4>Follow Us</h4>
                 <a 
-                  href="https://www.instagram.com/keratinglow_bh/" 
+                  href={INSTAGRAM_URL} 
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
-                  @keratinglow_bh
+                  {INSTAGRAM_HANDLE}
                 </a>
                 <p>Stay updated with our latest work and transformations</p>
               </div>
@@ -143,7 +152,7 @@ const Contact = () => {
               transition={{ delay: 0.6 }}
             >
               <motion.a 
-                href="https://api.whatsapp.com/send?phone=97333263906" 
+                href={WHATSAPP_URL} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="btn btn-primary"
@@ -164,7 +173,7 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5063.4202353867195!2d50.47492395736732!3d26.18435372014316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e49b10030d38e03%3A0x98ae3cadb957cafd!2sKeratin%20Glow!5e0!3m2!1sen!2sbh!4v1766471199043!5m2!1sen!2sbh"
+              src={MAPS_EMBED_URL}
               width="100%"
               height="450"
               style={{ border: 0, borderRadius: '12px' }}
@@ -181,7 +190,7 @@ const Contact = () => {
               transition={{ delay: 0.5 }}
             >
               <a 
-                href="https://maps.app.goo.gl/Qw9yFp3MLCGncCnz5" 
+                href={MAPS_URL} 
                 target="_blank" 
                 rel="noopener noreferrer"
               >

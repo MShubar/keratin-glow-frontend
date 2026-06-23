@@ -29,7 +29,7 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Your trusted hair care specialist in Bahrain
+          Your trusted keratin treatment and hair care specialist in Janabiyah, Bahrain
         </motion.p>
 
         <div className="about-content">
@@ -54,8 +54,8 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              At Keratin Glow, we specialize in advanced hair treatments that transform and revitalize your hair. 
-              Our expert services include keratin treatments, nanoplasty, cold restoration, and professional hair coloring.
+              At Keratin Glow in Janabiyah, Bahrain, we specialize in advanced hair treatments that transform and revitalize your hair. 
+              Our expert services include keratin treatments, nanoplasty, cold restoration, and professional hair coloring — serving clients across Manama and the wider GCC.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}

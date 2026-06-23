@@ -1,6 +1,6 @@
 .contact {
   padding: 6rem 0;
-  background: white;
+  background: var(--bg-section);
 }
 
 .contact-grid {
@@ -20,14 +20,16 @@
   display: flex;
   gap: 1.5rem;
   padding: 1.5rem;
-  background: var(--light-color);
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
   border-radius: 12px;
   margin-bottom: 1.5rem;
   transition: all 0.3s ease;
 }
 
 .contact-item:hover {
-  background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%);
+  background: var(--bg-card-hover);
+  border-color: var(--border-subtle);
   transform: translateX(5px);
 }
 
@@ -56,7 +58,7 @@
 }
 
 .contact-item p {
-  color: #666;
+  color: var(--text-muted);
   line-height: 1.6;
   margin: 0.3rem 0;
 }
@@ -74,12 +76,14 @@
   height: 450px;
   border-radius: 12px;
   box-shadow: var(--shadow);
+  border: 1px solid var(--border-card);
 }
 
 .map-note {
   text-align: center;
   margin-top: 1rem;
   font-size: 0.95rem;
+  color: var(--text-muted);
 }
 
 .map-note a {
@@ -94,7 +98,6 @@
   text-decoration: underline;
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
   .contact-grid {
     grid-template-columns: 1fr;

@@ -1,6 +1,6 @@
 .pricing {
   padding: 6rem 0;
-  background: white;
+  background: var(--bg-section);
 }
 
 .pricing-grid {
@@ -11,18 +11,19 @@
 }
 
 .pricing-card {
-  background: white;
+  background: var(--bg-card);
   border-radius: 16px;
   padding: 2.5rem;
   box-shadow: var(--shadow);
-  border: 2px solid #f0f0f0;
+  border: 1px solid var(--border-card);
   transition: all 0.3s ease;
 }
 
 .pricing-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-  border-color: var(--primary-color);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-subtle);
+  background: var(--bg-card-hover);
 }
 
 .pricing-card-featured {
@@ -36,7 +37,7 @@
   top: -15px;
   right: 20px;
   background: var(--gradient);
-  color: white;
+  color: var(--bg-dark);
   padding: 0.5rem 1.5rem;
   border-radius: 50px;
   font-size: 0.85rem;
@@ -69,11 +70,11 @@
 
 .pricing-item-name {
   font-weight: 500;
-  color: var(--dark-color);
+  color: var(--text-color);
 }
 
 .pricing-item-dots {
-  border-bottom: 2px dotted #ddd;
+  border-bottom: 2px dotted rgba(255, 255, 255, 0.15);
   flex-grow: 1;
   min-width: 20px;
 }
@@ -86,7 +87,7 @@
 }
 
 .pricing-note {
-  background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%);
+  background: var(--bg-elevated);
   padding: 2rem;
   border-radius: 12px;
   text-align: center;
@@ -95,7 +96,7 @@
 }
 
 .pricing-note p {
-  color: #555;
+  color: var(--text-muted);
   line-height: 1.8;
   font-size: 1.05rem;
 }
@@ -110,7 +111,6 @@
   padding: 15px 40px;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .pricing {
     padding: 4rem 0;

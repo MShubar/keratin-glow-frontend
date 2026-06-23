@@ -1,5 +1,6 @@
 import { MessageCircle, MapPin } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { MAPS_URL, SITE_TAGLINE, WHATSAPP_URL } from '../config/site';
 import './Hero.css';
 
 const Hero = () => {
@@ -7,13 +8,21 @@ const Hero = () => {
     <section id="home" className="hero">
       <div className="hero-overlay"></div>
       <div className="hero-content">
-        <motion.h1 
+        <motion.img
+          src="/logo.png"
+          alt="Keratin Glow Bahrain"
+          className="hero-logo"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        />
+        <motion.h1
           className="hero-title"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          KERATIN GLOW
+          Keratin Treatment & Hair Salon in Bahrain
         </motion.h1>
         <motion.p 
           className="hero-subtitle"
@@ -21,7 +30,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          Hair Master in the GCC
+          {SITE_TAGLINE}
         </motion.p>
         <motion.p 
           className="hero-description"
@@ -29,8 +38,8 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
         >
-          You will be my regular client <br />
-          Will stay years together and will grow gorgeous hair for you
+          Professional keratin, nanoplasty & hair coloring in Janabiyah, Bahrain. <br />
+          Book your appointment on WhatsApp today.
         </motion.p>
         <motion.div 
           className="hero-buttons"
@@ -39,7 +48,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.9 }}
         >
           <motion.a 
-            href="https://api.whatsapp.com/send?phone=97333263906" 
+            href={WHATSAPP_URL} 
             target="_blank" 
             rel="noopener noreferrer"
             className="btn btn-primary"
@@ -50,7 +59,7 @@ const Hero = () => {
             Book on WhatsApp
           </motion.a>
           <motion.a 
-            href="https://maps.app.goo.gl/Qw9yFp3MLCGncCnz5" 
+            href={MAPS_URL} 
             target="_blank" 
             rel="noopener noreferrer"
             className="btn btn-secondary"

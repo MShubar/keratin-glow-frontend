@@ -87,7 +87,7 @@ const Services = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Professional hair treatments and services designed to transform and maintain your beautiful hair
+          Keratin, nanoplasty, balayage & hair coloring services in Bahrain — tailored to your hair type
         </motion.p>
 
         <motion.div 

@@ -1,6 +1,6 @@
 .services {
   padding: 6rem 0;
-  background: var(--light-color);
+  background: var(--bg-section-alt);
 }
 
 .services-grid {
@@ -11,10 +11,11 @@
 }
 
 .service-card {
-  background: white;
+  background: var(--bg-card);
   border-radius: 16px;
   padding: 2.5rem;
   box-shadow: var(--shadow);
+  border: 1px solid var(--border-card);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -34,7 +35,9 @@
 
 .service-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--border-subtle);
+  background: var(--bg-card-hover);
 }
 
 .service-card:hover::before {
@@ -63,7 +66,7 @@
 }
 
 .service-description {
-  color: #666;
+  color: var(--text-muted);
   margin-bottom: 1.5rem;
   line-height: 1.8;
 }
@@ -88,7 +91,7 @@
   padding: 0.5rem 0;
   padding-left: 1.5rem;
   position: relative;
-  color: #555;
+  color: var(--text-muted);
 }
 
 .service-features li::before {
@@ -100,7 +103,7 @@
 }
 
 .service-ideal {
-  background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%);
+  background: var(--bg-elevated);
   padding: 1.5rem;
   border-radius: 12px;
   border-left: 4px solid var(--primary-color);
@@ -114,14 +117,14 @@
 }
 
 .service-ideal p {
-  color: #666;
+  color: var(--text-muted);
   line-height: 1.6;
   font-size: 0.95rem;
 }
 
 .special-note-inline {
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-  color: white;
+  color: var(--bg-dark);
   padding: 1.5rem;
   border-radius: 12px;
   text-align: center;
@@ -149,7 +152,7 @@
 
 .special-note {
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-  color: white;
+  color: var(--bg-dark);
   padding: 2rem;
   border-radius: 16px;
   text-align: center;
@@ -172,7 +175,6 @@
   font-size: 1.3rem;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .services {
     padding: 4rem 0;

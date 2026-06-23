@@ -6,6 +6,8 @@ import Services from './components/Services';
 import Pricing from './components/Pricing';
 import About from './components/About';
 import Contact from './components/Contact';
+import FAQ from './components/FAQ';
+import Footer from './components/Footer';
 import './App.css';
 
 function App() {
@@ -33,7 +35,9 @@ function App() {
         <Services />
         <Pricing />
         <About />
+        <FAQ />
         <Contact />
+        <Footer />
       </div>
     </Router>
   );

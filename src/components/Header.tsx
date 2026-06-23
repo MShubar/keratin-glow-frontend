@@ -3,6 +3,8 @@ import { Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 import './Header.css';
 
+const navItems = ['home', 'services', 'pricing', 'about', 'faq', 'contact'];
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -30,16 +32,15 @@ const Header = () => {
         >
           <motion.img 
             src="/logo.png" 
-            alt="Keratin Glow" 
+            alt="Keratin Glow Bahrain" 
             className="logo-img"
-            whileHover={{ rotate: 360 }}
-            transition={{ duration: 0.6 }}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
           />
-          <span className="logo-text">KERATIN GLOW</span>
         </motion.div>
 
         <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
-          {['home', 'services', 'pricing', 'about', 'contact'].map((item, i) => (
+          {navItems.map((item, i) => (
             <motion.a 
               key={item}
               href={`#${item}`} 
@@ -49,7 +50,7 @@ const Header = () => {
               transition={{ delay: 0.4 + i * 0.1 }}
               whileHover={{ scale: 1.1, color: '#d4af37' }}
             >
-              {item.charAt(0).toUpperCase() + item.slice(1)}
+              {item === 'faq' ? 'FAQ' : item.charAt(0).toUpperCase() + item.slice(1)}
             </motion.a>
           ))}
         </nav>
