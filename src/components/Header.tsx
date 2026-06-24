@@ -33,7 +33,7 @@ const Header = () => {
       <div className="header-container">
         <div className="logo">
           <img 
-            src="/logo.webp" 
+            src="/logo-sm.webp" 
             alt="Keratin Glow Bahrain" 
             className="logo-img"
             width={52}

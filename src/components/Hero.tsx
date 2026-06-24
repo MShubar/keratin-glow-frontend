@@ -25,13 +25,13 @@ const Hero = () => {
       <div className="hero-overlay" aria-hidden="true" />
       <div className="hero-content">
         <img
-          src="/logo.webp"
+          src="/hero-logo.webp"
           alt="Keratin Glow Bahrain"
           className="hero-logo"
           width={180}
           height={180}
           fetchPriority="high"
-          decoding="sync"
+          decoding="async"
         />
         <h1 className="hero-title">
           Keratin Treatment & Hair Salon in Bahrain
