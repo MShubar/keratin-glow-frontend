@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { motion } from 'framer-motion';
 import './Header.css';
 
 const navItems = ['home', 'services', 'pricing', 'about', 'faq', 'contact'];
@@ -30,53 +29,39 @@ const Header = () => {
   };
 
   return (
-    <motion.header 
-      className="header"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-    >
+    <header className="header">
       <div className="header-container">
-        <motion.div 
-          className="logo"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.3 }}
-        >
-          <motion.img 
-            src="/logo.png" 
+        <div className="logo">
+          <img 
+            src="/logo.webp" 
             alt="Keratin Glow Bahrain" 
             className="logo-img"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
+            width={52}
+            height={52}
           />
-        </motion.div>
+        </div>
 
         <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
-          {navItems.map((item, i) => (
-            <motion.a 
+          {navItems.map((item) => (
+            <a 
               key={item}
               href={`#${item}`} 
               onClick={(e) => { e.preventDefault(); scrollToSection(item); }}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 + i * 0.1 }}
-              whileHover={{ scale: 1.1, color: '#d4af37' }}
             >
               {item === 'faq' ? 'FAQ' : item.charAt(0).toUpperCase() + item.slice(1)}
-            </motion.a>
+            </a>
           ))}
         </nav>
 
-        <motion.button 
+        <button 
           className="menu-toggle" 
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          whileTap={{ scale: 0.9 }}
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </motion.button>
+        </button>
       </div>
-    </motion.header>
+    </header>
   );
 };
 

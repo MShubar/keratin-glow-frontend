@@ -1,100 +1,78 @@
+import { useEffect, useState, type CSSProperties } from 'react';
 import { MessageCircle, MapPin } from 'lucide-react';
-import { motion } from 'framer-motion';
 import { MAPS_URL, SITE_TAGLINE, WHATSAPP_URL } from '../config/site';
 import './Hero.css';
 
+const PARTICLE_COUNT = 8;
+
 const Hero = () => {
+  const [showParticles, setShowParticles] = useState(false);
+
+  useEffect(() => {
+    const enableParticles = () => setShowParticles(true);
+
+    if ('requestIdleCallback' in window) {
+      const id = window.requestIdleCallback(enableParticles, { timeout: 2500 });
+      return () => window.cancelIdleCallback(id);
+    }
+
+    const timer = setTimeout(enableParticles, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section id="home" className="hero">
-      <div className="hero-overlay"></div>
+      <div className="hero-overlay" aria-hidden="true" />
       <div className="hero-content">
-        <motion.img
-          src="/logo.png"
+        <img
+          src="/logo.webp"
           alt="Keratin Glow Bahrain"
           className="hero-logo"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          width={180}
+          height={180}
+          fetchPriority="high"
+          decoding="sync"
         />
-        <motion.h1
-          className="hero-title"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-        >
+        <h1 className="hero-title">
           Keratin Treatment & Hair Salon in Bahrain
-        </motion.h1>
-        <motion.p 
-          className="hero-subtitle"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
+        </h1>
+        <p className="hero-subtitle hero-fade-in hero-fade-in-1">
           {SITE_TAGLINE}
-        </motion.p>
-        <motion.p 
-          className="hero-description"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-        >
-          Professional keratin, nanoplasty & hair coloring in Janabiyah, Bahrain. <br />
+        </p>
+        <p className="hero-description hero-fade-in hero-fade-in-2">
+          Professional keratin, nanoplasty & hair coloring in Janabiyah, Bahrain.
+          <br />
           Book your appointment on WhatsApp today.
-        </motion.p>
-        <motion.div 
-          className="hero-buttons"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-        >
-          <motion.a 
-            href={WHATSAPP_URL} 
-            target="_blank" 
+        </p>
+        <div className="hero-buttons hero-fade-in hero-fade-in-3">
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
             rel="noopener noreferrer"
             className="btn btn-primary"
-            whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(212, 175, 55, 0.4)" }}
-            whileTap={{ scale: 0.95 }}
           >
             <MessageCircle size={20} />
             Book on WhatsApp
-          </motion.a>
-          <motion.a 
-            href={MAPS_URL} 
-            target="_blank" 
+          </a>
+          <a
+            href={MAPS_URL}
+            target="_blank"
             rel="noopener noreferrer"
             className="btn btn-secondary"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
           >
             <MapPin size={20} />
             Find Us
-          </motion.a>
-        </motion.div>
+          </a>
+        </div>
       </div>
-      
-      {/* Floating particles */}
-      <div className="particles">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="particle"
-            initial={{ 
-              x: Math.random() * window.innerWidth, 
-              y: Math.random() * window.innerHeight,
-              opacity: 0 
-            }}
-            animate={{ 
-              y: [null, Math.random() * -200 - 100],
-              opacity: [0, 1, 0]
-            }}
-            transition={{ 
-              duration: Math.random() * 3 + 2,
-              repeat: Infinity,
-              delay: Math.random() * 2
-            }}
-          />
-        ))}
-      </div>
+
+      {showParticles && (
+        <div className="particles" aria-hidden="true">
+          {Array.from({ length: PARTICLE_COUNT }, (_, i) => (
+            <span key={i} className="particle" style={{ '--i': i } as CSSProperties} />
+          ))}
+        </div>
+      )}
     </section>
   );
 };

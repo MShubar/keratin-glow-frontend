@@ -18,7 +18,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="container footer-content">
         <div className="footer-brand">
-          <img src="/logo.png" alt="Keratin Glow Bahrain" className="footer-logo" />
+          <img src="/logo.webp" alt="Keratin Glow Bahrain" className="footer-logo" width={72} height={72} />
           <p className="footer-tagline">
             Bahrain&apos;s trusted hair salon for keratin treatments, nanoplasty, balayage, and
             professional hair coloring in Janabiyah.

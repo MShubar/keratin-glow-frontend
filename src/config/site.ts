@@ -44,7 +44,7 @@ export const SEO = {
     'علاج الكيراتين البحرين',
     'تسريح الشعر البحرين',
   ].join(', '),
-  ogImage: `${SITE_URL}/og-image.png`,
+  ogImage: `${SITE_URL}/og-image.webp`,
 };
 
 export const SERVICES = [

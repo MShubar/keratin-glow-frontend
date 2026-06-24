@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
@@ -13,38 +12,22 @@ import Footer from './components/Footer';
 import './App.css';
 
 function App() {
-  const [isReady, setIsReady] = useState(false);
-
-  useEffect(() => {
-    // Scroll to top first
-    window.scrollTo(0, 0);
-    // Small delay to ensure scroll completes before animations start
-    const timer = setTimeout(() => {
-      setIsReady(true);
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <>
       <Analytics />
       <SpeedInsights />
-      {!isReady ? (
-        <div className="App" style={{ minHeight: '100vh' }} />
-      ) : (
-        <Router>
-          <div className="App">
-            <Header />
-            <Hero />
-            <Services />
-            <Pricing />
-            <About />
-            <FAQ />
-            <Contact />
-            <Footer />
-          </div>
-        </Router>
-      )}
+      <Router>
+        <div className="App">
+          <Header />
+          <Hero />
+          <Services />
+          <Pricing />
+          <About />
+          <FAQ />
+          <Contact />
+          <Footer />
+        </div>
+      </Router>
     </>
   );
 }
