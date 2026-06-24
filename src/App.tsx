@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -23,23 +24,26 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  if (!isReady) {
-    return <div className="App" style={{ minHeight: '100vh' }} />;
-  }
-
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <Hero />
-        <Services />
-        <Pricing />
-        <About />
-        <FAQ />
-        <Contact />
-        <Footer />
-      </div>
-    </Router>
+    <>
+      <Analytics />
+      {!isReady ? (
+        <div className="App" style={{ minHeight: '100vh' }} />
+      ) : (
+        <Router>
+          <div className="App">
+            <Header />
+            <Hero />
+            <Services />
+            <Pricing />
+            <About />
+            <FAQ />
+            <Contact />
+            <Footer />
+          </div>
+        </Router>
+      )}
+    </>
   );
 }
 
