@@ -20,9 +20,9 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: 'nanoplasty-1',
     title: 'Complete Straightening',
     treatment: 'Nanoplasty',
-    description: 'Tight curls straightened with long-lasting, protected results.',
-    before: '/gallery/nanoplasty-1-before.webp',
-    after: '/gallery/nanoplasty-1-after.webp',
+    description: 'Tight curly volume transformed into long, sleek, glossy straight hair.',
+    before: '/gallery/nanoplasty-before.webp',
+    after: '/gallery/nanoplasty-after.webp',
   },
   {
     id: 'hair-extension-1',
