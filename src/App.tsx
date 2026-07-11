@@ -6,6 +6,7 @@ import './App.css';
 
 const Services = lazy(() => import('./components/Services'));
 const Pricing = lazy(() => import('./components/Pricing'));
+const Gallery = lazy(() => import('./components/Gallery'));
 const About = lazy(() => import('./components/About'));
 const FAQ = lazy(() => import('./components/FAQ'));
 const Contact = lazy(() => import('./components/Contact'));
@@ -31,6 +32,7 @@ function App() {
           <Suspense fallback={null}>
             <Services />
             <Pricing />
+            <Gallery />
             <About />
             <FAQ />
             <Contact />

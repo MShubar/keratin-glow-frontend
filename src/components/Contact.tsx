@@ -1,4 +1,4 @@
-import { MessageCircle, MapPin, Instagram } from 'lucide-react';
+import { MessageCircle, MapPin, Instagram, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
 import {
   ADDRESS,
@@ -6,6 +6,8 @@ import {
   INSTAGRAM_URL,
   MAPS_EMBED_URL,
   MAPS_URL,
+  OPENING_HOURS,
+  OPENING_HOURS_SUMMARY,
   PHONE_DISPLAY,
   WHATSAPP_URL,
 } from '../config/site';
@@ -112,13 +114,44 @@ const Contact = () => {
                 >
                   View on Google Maps
                 </a>
-                <p>{ADDRESS.display}</p>
+                {ADDRESS.displayLines.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
               </div>
             </motion.div>
 
             <motion.div 
               className="contact-item"
               custom={2}
+              variants={contactItemVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              whileHover={{ x: 10, transition: { duration: 0.2 } }}
+            >
+              <motion.div
+                whileHover={{ scale: 1.2, rotate: 15 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Clock size={24} />
+              </motion.div>
+              <div>
+                <h4>Opening Hours</h4>
+                <p>{OPENING_HOURS_SUMMARY}</p>
+                <ul className="contact-hours-list">
+                  {OPENING_HOURS.map(({ day, display }) => (
+                    <li key={day}>
+                      <span className="contact-hours-day">{day}</span>
+                      <span>{display}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+
+            <motion.div 
+              className="contact-item"
+              custom={3}
               variants={contactItemVariants}
               initial="hidden"
               whileInView="visible"

@@ -17,12 +17,41 @@ export const GEO = {
 };
 
 export const ADDRESS = {
-  streetAddress: 'Janabiyah',
-  addressLocality: 'Janabiyah',
+  streetAddress: '5FPG+88C, Janabiyah',
+  addressLocality: 'Al Janabiyah',
   addressRegion: 'Northern Governorate',
   addressCountry: 'BH',
-  display: 'Keratin Glow, Janabiyah, Kingdom of Bahrain',
+  plusCode: '5FPG+88C',
+  display: '5FPG+88C, Janabiyah, Kingdom of Bahrain',
+  displayLines: ['5FPG+88C, Janabiyah', 'Kingdom of Bahrain'],
 };
+
+export type OpeningHoursEntry = {
+  day: string;
+  opens: string;
+  closes: string;
+  display: string;
+};
+
+export const OPENING_HOURS: OpeningHoursEntry[] = [
+  { day: 'Monday', opens: '10:00', closes: '20:00', display: '10:00 AM – 8:00 PM' },
+  { day: 'Tuesday', opens: '09:00', closes: '20:00', display: '9:00 AM – 8:00 PM' },
+  { day: 'Wednesday', opens: '10:00', closes: '20:00', display: '10:00 AM – 8:00 PM' },
+  { day: 'Thursday', opens: '10:00', closes: '20:00', display: '10:00 AM – 8:00 PM' },
+  { day: 'Friday', opens: '10:00', closes: '20:00', display: '10:00 AM – 8:00 PM' },
+  { day: 'Saturday', opens: '10:00', closes: '20:00', display: '10:00 AM – 8:00 PM' },
+  { day: 'Sunday', opens: '10:00', closes: '20:00', display: '10:00 AM – 8:00 PM' },
+];
+
+export const OPENING_HOURS_SUMMARY = 'Open daily · Tue 9 AM – 8 PM · Other days 10 AM – 8 PM';
+
+/** Schema.org OpeningHoursSpecification for JSON-LD */
+export const SCHEMA_OPENING_HOURS = OPENING_HOURS.map(({ day, opens, closes }) => ({
+  '@type': 'OpeningHoursSpecification',
+  dayOfWeek: day,
+  opens,
+  closes,
+}));
 
 export const SEO = {
   title: 'Keratin Glow | Keratin Treatment & Hair Salon in Bahrain',
@@ -83,7 +112,12 @@ export const FAQ_ITEMS = [
   {
     question: 'Where is Keratin Glow located in Bahrain?',
     answer:
-      'Keratin Glow is located in Janabiyah, Kingdom of Bahrain. You can find our exact location on Google Maps or message us on WhatsApp at +973 3326 3906 for directions and appointment booking.',
+      'Keratin Glow is at 5FPG+88C, Janabiyah, Kingdom of Bahrain. Find our exact pin on Google Maps or message us on WhatsApp at +973 3326 3906 for directions.',
+  },
+  {
+    question: 'What are Keratin Glow opening hours?',
+    answer:
+      'We are open Monday, Wednesday to Sunday from 10:00 AM to 8:00 PM, and Tuesday from 9:00 AM to 8:00 PM. Book your appointment on WhatsApp at +973 3326 3906.',
   },
   {
     question: 'How do I book an appointment at Keratin Glow?',

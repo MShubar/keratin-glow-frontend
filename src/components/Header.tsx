@@ -2,7 +2,13 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import './Header.css';
 
-const navItems = ['home', 'services', 'pricing', 'about', 'faq', 'contact'];
+const navItems = ['home', 'services', 'pricing', 'results', 'about', 'faq', 'contact'];
+
+const navLabel = (item: string) => {
+  if (item === 'faq') return 'FAQ';
+  if (item === 'results') return 'Results';
+  return item.charAt(0).toUpperCase() + item.slice(1);
+};
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,7 +54,7 @@ const Header = () => {
               href={`#${item}`} 
               onClick={(e) => { e.preventDefault(); scrollToSection(item); }}
             >
-              {item === 'faq' ? 'FAQ' : item.charAt(0).toUpperCase() + item.slice(1)}
+              {navLabel(item)}
             </a>
           ))}
         </nav>

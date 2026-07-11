@@ -63,6 +63,33 @@
   margin: 0.3rem 0;
 }
 
+.contact-hours-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  width: 100%;
+}
+
+.contact-hours-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  padding: 0.2rem 0;
+  border-bottom: 1px solid var(--border-card);
+}
+
+.contact-hours-list li:last-child {
+  border-bottom: none;
+}
+
+.contact-hours-day {
+  color: var(--text-color);
+  font-weight: 500;
+  min-width: 5.5rem;
+}
+
 .contact-cta {
   margin-top: 2rem;
 }
