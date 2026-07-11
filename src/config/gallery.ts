@@ -25,11 +25,11 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     after: '/gallery/nanoplasty-1-after.webp',
   },
   {
-    id: 'balayage-1',
-    title: 'Balayage Refresh',
-    treatment: 'Balayage',
-    description: 'Natural sun-kissed color with healthy, vibrant shine.',
-    before: '/gallery/balayage-1-before.webp',
-    after: '/gallery/balayage-1-after.webp',
+    id: 'hair-extension-1',
+    title: 'Hair Extension Transformation',
+    treatment: 'Hair Extension',
+    description: 'Added length and volume with natural-looking hair extensions.',
+    before: '/gallery/hair-extension-1-before.webp',
+    after: '/gallery/hair-extension-1-after.webp',
   },
 ];

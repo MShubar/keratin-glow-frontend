@@ -16,7 +16,8 @@ const pricingData = {
     items: [
       { name: "Cold restoration", price: "from 20 BD" },
       { name: "Air touch", price: "from 70 BD" },
-      { name: "Peeling", price: "from 30 BD" }
+      { name: "Peeling", price: "from 30 BD" },
+      { name: "Hair Extension", price: "from 150 BD" }
     ]
   },
   color: {

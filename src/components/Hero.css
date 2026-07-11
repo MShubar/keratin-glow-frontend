@@ -118,12 +118,13 @@
   font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  background: var(--gradient);
+  background: linear-gradient(135deg, #f5e6a8 0%, #ffd700 45%, #e8c547 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   line-height: 1.2;
   font-family: inherit;
+  filter: drop-shadow(0 0 18px rgba(255, 215, 0, 0.35));
 }
 
 .hero-subtitle {

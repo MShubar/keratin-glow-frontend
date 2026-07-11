@@ -8,7 +8,6 @@ const Services = lazy(() => import('./components/Services'));
 const Pricing = lazy(() => import('./components/Pricing'));
 const Gallery = lazy(() => import('./components/Gallery'));
 const About = lazy(() => import('./components/About'));
-const FAQ = lazy(() => import('./components/FAQ'));
 const Contact = lazy(() => import('./components/Contact'));
 const Footer = lazy(() => import('./components/Footer'));
 const Analytics = lazy(() =>
@@ -34,7 +33,6 @@ function App() {
             <Pricing />
             <Gallery />
             <About />
-            <FAQ />
             <Contact />
             <Footer />
           </Suspense>

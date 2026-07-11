@@ -1,6 +1,6 @@
 import { useEffect, useState, type CSSProperties } from 'react';
 import { MessageCircle, MapPin } from 'lucide-react';
-import { MAPS_URL, SITE_TAGLINE, WHATSAPP_URL } from '../config/site';
+import { MAPS_URL, WHATSAPP_URL } from '../config/site';
 import './Hero.css';
 
 const PARTICLE_COUNT = 8;
@@ -36,15 +36,12 @@ const Hero = () => {
         <h1 className="hero-title">
           Keratin Treatment & Hair Salon in Bahrain
         </h1>
-        <p className="hero-subtitle hero-fade-in hero-fade-in-1">
-          {SITE_TAGLINE}
-        </p>
-        <p className="hero-description hero-fade-in hero-fade-in-2">
+        <p className="hero-description hero-fade-in hero-fade-in-1">
           Professional keratin, nanoplasty & hair coloring in Janabiyah, Bahrain.
           <br />
           Book your appointment on WhatsApp today.
         </p>
-        <div className="hero-buttons hero-fade-in hero-fade-in-3">
+        <div className="hero-buttons hero-fade-in hero-fade-in-2">
           <a
             href={WHATSAPP_URL}
             target="_blank"

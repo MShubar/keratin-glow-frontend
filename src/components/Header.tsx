@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import './Header.css';
 
-const navItems = ['home', 'services', 'pricing', 'results', 'about', 'faq', 'contact'];
+const navItems = ['home', 'services', 'pricing', 'results', 'about', 'contact'];
 
 const navLabel = (item: string) => {
-  if (item === 'faq') return 'FAQ';
   if (item === 'results') return 'Results';
   return item.charAt(0).toUpperCase() + item.slice(1);
 };
