@@ -1,6 +1,8 @@
-import { motion } from 'framer-motion';
-import { Instagram } from 'lucide-react';
-import { GALLERY_ITEMS } from '../config/gallery';
+import { useEffect, useId, useState, type CSSProperties } from 'react';
+import { createPortal } from 'react-dom';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Instagram, X } from 'lucide-react';
+import { GALLERY_ITEMS, type GalleryItem, type GalleryPhotoFit } from '../config/gallery';
 import { INSTAGRAM_URL } from '../config/site';
 import './Gallery.css';
 
@@ -13,7 +15,40 @@ const cardVariants = {
   }),
 };
 
+function photoFitStyle(fit?: GalleryPhotoFit): CSSProperties | undefined {
+  if (!fit) return undefined;
+  return {
+    ['--photo-scale' as string]: String(fit.scale ?? 1),
+    ['--photo-position' as string]: fit.position ?? 'center 20%',
+  };
+}
+
+type LightboxState = {
+  item: GalleryItem;
+  focus: 'before' | 'after';
+};
+
 const Gallery = () => {
+  const [lightbox, setLightbox] = useState<LightboxState | null>(null);
+  const titleId = useId();
+
+  useEffect(() => {
+    if (!lightbox) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setLightbox(null);
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [lightbox]);
+
   return (
     <section id="results" className="gallery">
       <div className="container">
@@ -55,25 +90,41 @@ const Gallery = () => {
 
               <div className="gallery-compare">
                 <figure className="gallery-photo">
-                  <img
-                    src={item.before}
-                    alt={`Before ${item.treatment} — ${item.title}`}
-                    width={480}
-                    height={640}
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <button
+                    type="button"
+                    className="gallery-photo-button"
+                    aria-label={`View larger before photo — ${item.title}`}
+                    onClick={() => setLightbox({ item, focus: 'before' })}
+                  >
+                    <img
+                      src={item.before}
+                      alt={`Before ${item.treatment} — ${item.title}`}
+                      width={480}
+                      height={640}
+                      loading="lazy"
+                      decoding="async"
+                      style={photoFitStyle(item.beforeFit)}
+                    />
+                  </button>
                   <figcaption>Before</figcaption>
                 </figure>
                 <figure className="gallery-photo">
-                  <img
-                    src={item.after}
-                    alt={`After ${item.treatment} — ${item.title}`}
-                    width={480}
-                    height={640}
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <button
+                    type="button"
+                    className="gallery-photo-button"
+                    aria-label={`View larger after photo — ${item.title}`}
+                    onClick={() => setLightbox({ item, focus: 'after' })}
+                  >
+                    <img
+                      src={item.after}
+                      alt={`After ${item.treatment} — ${item.title}`}
+                      width={480}
+                      height={640}
+                      loading="lazy"
+                      decoding="async"
+                      style={photoFitStyle(item.afterFit)}
+                    />
+                  </button>
                   <figcaption>After</figcaption>
                 </figure>
               </div>
@@ -100,6 +151,76 @@ const Gallery = () => {
           </a>
         </motion.div>
       </div>
+
+      {createPortal(
+        <AnimatePresence>
+          {lightbox && (
+            <motion.div
+              className="gallery-lightbox"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby={titleId}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setLightbox(null)}
+            >
+              <motion.div
+                className="gallery-lightbox-panel"
+                initial={{ opacity: 0, scale: 0.96, y: 12 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.96, y: 8 }}
+                transition={{ duration: 0.25 }}
+                onClick={(event) => event.stopPropagation()}
+              >
+                <div className="gallery-lightbox-header">
+                  <div>
+                    <p className="gallery-lightbox-treatment">{lightbox.item.treatment}</p>
+                    <h3 id={titleId} className="gallery-lightbox-title">
+                      {lightbox.item.title}
+                    </h3>
+                  </div>
+                  <button
+                    type="button"
+                    className="gallery-lightbox-close"
+                    aria-label="Close photo viewer"
+                    onClick={() => setLightbox(null)}
+                  >
+                    <X size={22} />
+                  </button>
+                </div>
+
+                <div className="gallery-lightbox-compare">
+                  <figure
+                    className={`gallery-lightbox-photo${lightbox.focus === 'before' ? ' is-focused' : ''}`}
+                  >
+                    <img
+                      src={lightbox.item.before}
+                      alt={`Before ${lightbox.item.treatment} — ${lightbox.item.title}`}
+                      width={768}
+                      height={1024}
+                    />
+                    <figcaption>Before</figcaption>
+                  </figure>
+                  <figure
+                    className={`gallery-lightbox-photo${lightbox.focus === 'after' ? ' is-focused' : ''}`}
+                  >
+                    <img
+                      src={lightbox.item.after}
+                      alt={`After ${lightbox.item.treatment} — ${lightbox.item.title}`}
+                      width={768}
+                      height={1024}
+                    />
+                    <figcaption>After</figcaption>
+                  </figure>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body,
+      )}
     </section>
   );
 };

@@ -65,18 +65,36 @@
   background: var(--bg-elevated);
 }
 
+.gallery-photo-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+  color: inherit;
+}
+
+.gallery-photo-button:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: -2px;
+}
+
 .gallery-photo img {
   display: block;
   width: 100%;
   height: 320px;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: var(--photo-position, center 20%);
+  transform: scale(var(--photo-scale, 1));
+  transform-origin: center center;
   transition: transform 0.4s ease;
   background: #1a1a1a;
 }
 
-.gallery-card:hover .gallery-photo img {
-  transform: scale(1.03);
+.gallery-card:hover .gallery-photo img,
+.gallery-photo-button:hover img {
+  transform: scale(calc(var(--photo-scale, 1) * 1.03));
 }
 
 .gallery-photo figcaption {
@@ -91,9 +109,121 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
+  pointer-events: none;
 }
 
 .gallery-photo:last-child figcaption {
+  color: var(--primary-color);
+}
+
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: rgba(0, 0, 0, 0.84);
+  backdrop-filter: blur(6px);
+}
+
+.gallery-lightbox-panel {
+  width: min(1100px, 100%);
+  max-height: min(92vh, 980px);
+  overflow: auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 18px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+}
+
+.gallery-lightbox-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.25rem 1rem;
+}
+
+.gallery-lightbox-treatment {
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--primary-color);
+}
+
+.gallery-lightbox-title {
+  margin: 0;
+  font-size: 1.35rem;
+  color: var(--dark-color);
+}
+
+.gallery-lightbox-close {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--border-card);
+  border-radius: 999px;
+  background: var(--bg-elevated);
+  color: var(--dark-color);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.gallery-lightbox-close:hover {
+  border-color: var(--primary-color);
+  background: var(--bg-card-hover);
+}
+
+.gallery-lightbox-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--border-card);
+  padding: 0 1.25rem 1.25rem;
+}
+
+.gallery-lightbox-photo {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #111;
+}
+
+.gallery-lightbox-photo img {
+  display: block;
+  width: 100%;
+  height: min(68vh, 720px);
+  object-fit: contain;
+  background: #111;
+}
+
+.gallery-lightbox-photo figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.65rem 0.85rem;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.gallery-lightbox-photo.is-focused {
+  box-shadow: inset 0 0 0 2px var(--primary-color);
+}
+
+.gallery-lightbox-photo:last-child figcaption {
   color: var(--primary-color);
 }
 
@@ -127,6 +257,35 @@
 
   .gallery-card-title {
     font-size: 1.2rem;
+  }
+
+  .gallery-lightbox {
+    padding: 0.75rem;
+    align-items: flex-end;
+  }
+
+  .gallery-lightbox-panel {
+    max-height: 94vh;
+    border-radius: 16px 16px 12px 12px;
+  }
+
+  .gallery-lightbox-header {
+    padding: 1rem 1rem 0.75rem;
+  }
+
+  .gallery-lightbox-title {
+    font-size: 1.15rem;
+  }
+
+  .gallery-lightbox-compare {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 0 1rem 1rem;
+    background: transparent;
+  }
+
+  .gallery-lightbox-photo img {
+    height: min(38vh, 420px);
   }
 }
 
